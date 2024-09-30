@@ -1,0 +1,254 @@
+version: '3.8'
+
+services:
+  # Search Heads
+  search_head_1:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8081:8000"
+      - "8082:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  search_head_2:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8083:8000"
+      - "8084:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  search_head_3:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8085:8000"
+      - "8086:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Deployer
+  deployer:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8087:8000"
+      - "8088:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Indexers
+  indexer_1:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8091:8000"
+      - "8092:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  indexer_2:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8093:8000"
+      - "8094:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  indexer_3:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8095:8000"
+      - "8096:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Index Cluster Manager
+  index_cluster_manager:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8097:8000"
+      - "8098:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Heavy Forwarders
+  heavy_forwarder_1:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  heavy_forwarder_2:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  heavy_forwarder_3:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  heavy_forwarder_4:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Deployment Server
+  deployment_server:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Universal Forwarders
+  universal_forwarder_1:
+    image: splunk/universalforwarder:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  universal_forwarder_2:
+    image: splunk/universalforwarder:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  universal_forwarder_3:
+    image: splunk/universalforwarder:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  universal_forwarder_4:
+    image: splunk/universalforwarder:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # Distributed Monitoring Console
+  distributed_monitoring:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    ports:
+      - "8100:8000"
+      - "8101:8089"
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+  # License Master
+  license_master:
+    image: splunk/splunk:latest
+    user: root
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=password
+    volumes:
+      - splunk_data:/opt/splunk/var
+    networks:
+      - splunk_net
+
+networks:
+  splunk_net:
+    driver: bridge
+
+volumes:
+  splunk_data:
